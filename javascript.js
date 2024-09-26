@@ -1,3 +1,9 @@
+const rockBtn = document.querySelector(".rock-btn");
+const paperBtn = document.querySelector(".paper-btn");
+const scissorsBtn = document.querySelector(".scissors-btn");
+const result = document.querySelector(".result-container");
+
+
 
 
 
@@ -6,103 +12,79 @@ function getComputerChoice() {
     ranNumber = Math.floor(Math.random() * 3)
     if (ranNumber === 0) {
         choice = "Rock";
+        console.log("CPU ha elegido ROCK")
     }
     else if (ranNumber === 1) {
         choice = "Paper";
+        console.log("CPU ha elegido PAPER")
     }
     else if (ranNumber === 2) {
         choice = "Scissors"
+        console.log("CPU ha elegido SCISSORS")
     }
     else alert("Wrong input, the only values are 'Rock' 'Paper' and 'Scissors'")
 }
-// getComputerChoice();
+
 
 
 let myChoice;
-function getHumanChoice() {
-    myChoice = prompt("Rock, Paper or Scissors?");
-    myChoice = myChoice.toLowerCase();
-    if (myChoice === "rock") {
-        alert("Your choice is ROCK");
-    }
-    else if (myChoice === "paper") {
-        alert("Your choice is PAPER")
-    }
-    else if (myChoice === "scissors") {
-        alert("Your choice is SCISSORS")
-    }
-    else "Wrong choice"
-}
-// getHumanChoice();
-
-
-
 let humanScore = 0;
 let computerScore = 0;
+let winOrLose = "";
+
+winOrLose = ""
 
 function playRound() {
     if (myChoice == "rock" && choice == "Rock") {
         console.log("Empate");
+        winOrLose = "Empate";
         humanScore;
         computerScore;
     }
     else if (myChoice == "paper" && choice == "Rock") {
         console.log(`You WIN`);
+        winOrLose = "WIN";
         humanScore++;
     }
     else if (myChoice == "scissors" && choice == "Rock") {
         console.log(`You LOSE`);
+        winOrLose = "LOSE";
         computerScore++;
     }
     else if (myChoice == "rock" && choice == "Paper") {
         console.log(`You LOSE`);
+        winOrLose = "LOSE";
         computerScore++;
     }
     else if (myChoice == "paper" && choice == "Paper") {
         console.log("Empate");
+        winOrLose = "Empate";
         humanScore;
         computerScore;
     }
     else if (myChoice == "scissors" && choice == "Paper") {
         console.log("You WIN");
+        winOrLose = "WIN";
         humanScore++;
     }
     else if (myChoice == "rock" && choice == "Scissors") {
         console.log("You WIN");
+        winOrLose = "WIN";
         humanScore++;
     }
     else if (myChoice == "paper" && choice == "Scissors") {
         console.log("You LOSE");
+        winOrLose = "LOSE";
         computerScore++;
     }
     else if (myChoice == "scissors" && choice == "Scissors") {
         console.log("Empate");
+        winOrLose = "Empate";
         humanScore;
         computerScore;
     }
     else "ERROR"
 }
-// playRound();
-
-
-function PlayGame(i) {
-for (let i = 0; i < 5; i++) {
-    console.log(`Ronda ${i}`);
-    getComputerChoice();
-    getHumanChoice();
-    console.log(`Has elegido ${myChoice}`);
-    console.log(`Rival ha elegido ${choice}`);  
-    playRound();
-    console.log(`YOUR SCORE: ${humanScore} CPU SCORE: ${computerScore}`)
-}
-ganador()
-}
-
-
-
-PlayGame();
-
-
 
 
 
@@ -114,6 +96,74 @@ function ganador() {
     else if (humanScore == computerScore) {
         console.log("TIE")
     } 
+}
+
+
+
+//todo  ------ Botones ------  //
+
+const playerChoice = document.createElement("p");
+result.appendChild(playerChoice);
+
+const cpuChoice = document.createElement("p");
+result.appendChild(cpuChoice);
+
+const roundWinner = document.createElement("p");
+result.appendChild(roundWinner);
+
+
+
+rockBtn.addEventListener("click", () => {
+    result.removeChild(playerChoice);
+    result.removeChild(cpuChoice);
+    result.removeChild(roundWinner);
+    myChoice = "rock";
+    result.appendChild(playerChoice);
+    playerChoice.textContent = "Has elegido Rock";
+    getComputerChoice();
+    cpuChoice.textContent = `CPU ha elegido ${choice}`;
+    result.appendChild(cpuChoice);
+    playRound();
+    roundWinner.textContent = `${winOrLose}`;
+    result.appendChild(roundWinner);
+    console.log("Elegiste rock");});
+
+
+
+paperBtn.addEventListener("click", () => {
+    result.removeChild(playerChoice);
+    result.removeChild(cpuChoice);
+    result.removeChild(roundWinner);
+    myChoice = "paper";
+    result.appendChild(playerChoice);
+    playerChoice.textContent = "Has elegido Paper";
+    getComputerChoice();
+    cpuChoice.textContent = `CPU ha elegido ${choice}`;
+    result.appendChild(cpuChoice);
+    playRound();
+    roundWinner.textContent = `${winOrLose}`;
+    result.appendChild(roundWinner);
+    console.log("Elegiste paper");})
+
+
+
+scissorsBtn.addEventListener("click", () => {
+    result.removeChild(playerChoice);
+    result.removeChild(cpuChoice);
+    result.removeChild(roundWinner);
+    myChoice = "scissors";
+    result.appendChild(playerChoice);
+    playerChoice.textContent = "Has elegido Scissors";
+    getComputerChoice();
+    cpuChoice.textContent = `CPU ha elegido ${choice}`;
+    result.appendChild(cpuChoice);
+    playRound();
+    roundWinner.textContent = `${winOrLose}`;
+    result.appendChild(roundWinner);
+    console.log("Elegiste scissors");})
+
+function winner() {
+
 }
 
 
