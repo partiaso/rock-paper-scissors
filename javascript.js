@@ -89,12 +89,15 @@ function playRound() {
 
 
 function ganador() {
-    if (humanScore > computerScore) {
-        console.log("YOU HAVE WON THE GAME!")}
-    else if (humanScore < computerScore) {
-        console.log("YOU HAVE LOST THE GAME :(")}
-    else if (humanScore == computerScore) {
-        console.log("TIE")
+    if (humanScore == 5) {
+        gameWinner.textContent = "YOU HAVE WON THE GAME!";
+        result.appendChild(gameWinner);
+        console.log("YOU HAVE WON THE GAME!");
+    }
+    else if (computerScore == 5) {
+        gameWinner.textContent = "YOU HAVE LOST THE GAME :(";
+        result.appendChild(gameWinner);
+        console.log("YOU HAVE LOST THE GAME :(");
     } 
 }
 
@@ -111,60 +114,119 @@ result.appendChild(cpuChoice);
 const roundWinner = document.createElement("p");
 result.appendChild(roundWinner);
 
+const gameWinner = document.createElement("p");
+result.appendChild(gameWinner);
 
 
-rockBtn.addEventListener("click", () => {
-    result.removeChild(playerChoice);
-    result.removeChild(cpuChoice);
-    result.removeChild(roundWinner);
-    myChoice = "rock";
-    result.appendChild(playerChoice);
-    playerChoice.textContent = "Has elegido Rock";
-    getComputerChoice();
-    cpuChoice.textContent = `CPU ha elegido ${choice}`;
-    result.appendChild(cpuChoice);
-    playRound();
-    roundWinner.textContent = `${winOrLose}`;
-    result.appendChild(roundWinner);
-    console.log("Elegiste rock");});
-
-
-
-paperBtn.addEventListener("click", () => {
-    result.removeChild(playerChoice);
-    result.removeChild(cpuChoice);
-    result.removeChild(roundWinner);
-    myChoice = "paper";
-    result.appendChild(playerChoice);
-    playerChoice.textContent = "Has elegido Paper";
-    getComputerChoice();
-    cpuChoice.textContent = `CPU ha elegido ${choice}`;
-    result.appendChild(cpuChoice);
-    playRound();
-    roundWinner.textContent = `${winOrLose}`;
-    result.appendChild(roundWinner);
-    console.log("Elegiste paper");})
+// rockBtn.addEventListener("click", () => {
+//     result.removeChild(playerChoice);
+//     result.removeChild(cpuChoice);
+//     result.removeChild(roundWinner);
+//     myChoice = "rock";
+//     result.appendChild(playerChoice);
+//     playerChoice.textContent = "Has elegido Rock";
+//     getComputerChoice();
+//     cpuChoice.textContent = `CPU ha elegido ${choice}`;
+//     result.appendChild(cpuChoice);
+//     playRound();
+//     roundWinner.textContent = `${winOrLose}`;
+//     result.appendChild(roundWinner);
+//     console.log("Elegiste rock");});
 
 
 
-scissorsBtn.addEventListener("click", () => {
-    result.removeChild(playerChoice);
-    result.removeChild(cpuChoice);
-    result.removeChild(roundWinner);
-    myChoice = "scissors";
-    result.appendChild(playerChoice);
-    playerChoice.textContent = "Has elegido Scissors";
-    getComputerChoice();
-    cpuChoice.textContent = `CPU ha elegido ${choice}`;
-    result.appendChild(cpuChoice);
-    playRound();
-    roundWinner.textContent = `${winOrLose}`;
-    result.appendChild(roundWinner);
-    console.log("Elegiste scissors");})
+// paperBtn.addEventListener("click", () => {
+//     result.removeChild(playerChoice);
+//     result.removeChild(cpuChoice);
+//     result.removeChild(roundWinner);
+//     myChoice = "paper";
+//     result.appendChild(playerChoice);
+//     playerChoice.textContent = "Has elegido Paper";
+//     getComputerChoice();
+//     cpuChoice.textContent = `CPU ha elegido ${choice}`;
+//     result.appendChild(cpuChoice);
+//     playRound();
+//     roundWinner.textContent = `${winOrLose}`;
+//     result.appendChild(roundWinner);
+//     console.log("Elegiste paper");})
+
+
+
+// scissorsBtn.addEventListener("click", () => {
+//     result.removeChild(playerChoice);
+//     result.removeChild(cpuChoice);
+//     result.removeChild(roundWinner);
+//     myChoice = "scissors";
+//     result.appendChild(playerChoice);
+//     playerChoice.textContent = "Has elegido Scissors";
+//     getComputerChoice();
+//     cpuChoice.textContent = `CPU ha elegido ${choice}`;
+//     result.appendChild(cpuChoice);
+//     playRound();
+//     roundWinner.textContent = `${winOrLose}`;
+//     result.appendChild(roundWinner);
+//     console.log("Elegiste scissors");})
 
 function winner() {
+    rockBtn.addEventListener("click", () => {
+        result.removeChild(playerChoice);
+        result.removeChild(cpuChoice);
+        result.removeChild(roundWinner);
+        myChoice = "rock";
+        result.appendChild(playerChoice);
+        playerChoice.textContent = "Has elegido Rock";
+        getComputerChoice();
+        cpuChoice.textContent = `CPU ha elegido ${choice}`;
+        result.appendChild(cpuChoice);
+        playRound();
+        roundWinner.textContent = `${winOrLose}`;
+        result.appendChild(roundWinner);
+        console.log("Elegiste rock");
+        console.log(humanScore);
+        console.log(computerScore);
+        ganador();
+    });
 
+    paperBtn.addEventListener("click", () => {
+        result.removeChild(playerChoice);
+        result.removeChild(cpuChoice);
+        result.removeChild(roundWinner);
+        myChoice = "paper";
+        result.appendChild(playerChoice);
+        playerChoice.textContent = "Has elegido Paper";
+        getComputerChoice();
+        cpuChoice.textContent = `CPU ha elegido ${choice}`;
+        result.appendChild(cpuChoice);
+        playRound();
+        roundWinner.textContent = `${winOrLose}`;
+        result.appendChild(roundWinner);
+        console.log("Elegiste paper");
+        console.log(humanScore);
+        console.log(computerScore);
+        ganador();
+    })
+
+    scissorsBtn.addEventListener("click", () => {
+        result.removeChild(playerChoice);
+        result.removeChild(cpuChoice);
+        result.removeChild(roundWinner);
+        myChoice = "scissors";
+        result.appendChild(playerChoice);
+        playerChoice.textContent = "Has elegido Scissors";
+        getComputerChoice();
+        cpuChoice.textContent = `CPU ha elegido ${choice}`;
+        result.appendChild(cpuChoice);
+        playRound();
+        roundWinner.textContent = `${winOrLose}`;
+        result.appendChild(roundWinner);
+        console.log("Elegiste scissors");
+        console.log(humanScore);
+        console.log(computerScore);
+        ganador();
+    }); 
 }
+
+winner();
 
 
 
